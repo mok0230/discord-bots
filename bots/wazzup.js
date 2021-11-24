@@ -1,8 +1,8 @@
 const { getTokenValue } = require('../utils/string');
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, MessageEmbed } = require('discord.js');
 
 const client = new Client({
-  intents: [ Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_INTEGRATIONS ]
+  intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ]
 });
 
 client.on("ready", () => {
@@ -10,8 +10,12 @@ client.on("ready", () => {
 })
 
 client.on("message", msg => {
-  if (msg.content === 'hello') {
-    msg.reply('world')
+  if (msg.content === '!wazzup') {
+    console.log('received !wazzup');
+    const wazzupEmbed = new MessageEmbed().setImage("https://tenor.com/view/whats-up-scary-scary-movie-scream-gif-16966640");
+
+    // msg.reply(wazzupEmbed);
+    msg.channel.send("https://tenor.com/view/whats-up-scary-scary-movie-scream-gif-16966640");
   }
 })
 
@@ -22,4 +26,3 @@ if (tokenValue) {
 } else {
   console.error("Error! Cannot start bot - no token value was found. Please see README to configure token value.");
 }
-
