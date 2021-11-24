@@ -1,4 +1,4 @@
-require('dotenv').config();
+const { getTokenValue } = require('../utils/string');
 const { Client, Intents } = require('discord.js');
 
 const client = new Client({
@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 client.on("ready", () => {
-  console.log('hello world', client.user.tag);
+  console.log(`${client.user.tag} deployed!`);
 })
 
 client.on("message", msg => {
@@ -15,4 +15,11 @@ client.on("message", msg => {
   }
 })
 
-client.login(process.env.BOT_TOKEN);
+const tokenValue = getTokenValue(__filename);
+
+if (tokenValue) {
+  client.login(tokenValue);
+} else {
+  console.error("Error! Cannot start bot - no token value was found. Please see README to configure token value.");
+}
+
