@@ -15,3 +15,4 @@ Each file in the `/bots` directory should map to exactly one key in the `.env` f
 BOT_TOKEN=fr243fs23rfr32234f43refv
 MYDISCORDBOT_TOKEN=jhiu344u3uyu34y5783ytugih87h
 ```
+
